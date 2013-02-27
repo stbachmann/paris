@@ -78,6 +78,11 @@ public class Entity {
 		return component;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public <T extends Component> T getComponent(Class<T> componentType){
+		return (T) components.get(componentType);
+	}
+	
 	/**
 	 * Returns all the components of this Entity as an ObjectMap
 	 */
