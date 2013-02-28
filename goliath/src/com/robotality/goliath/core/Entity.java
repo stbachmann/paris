@@ -54,7 +54,7 @@ public class Entity {
 		
 		if(component != null){
 			components.put(componentType, component);
-			component.added(this);
+			component.entity = this;
 			
 			componentAdded.dispatch(this, component);
 		}
@@ -70,7 +70,7 @@ public class Entity {
 	public <T extends Component> T remove(Class<T> componentType){
 		T component = (T) components.get(componentType, null);
 		if(component != null){
-			component.removed(this);
+			component.entity = null;
 		}
 		
 		componentRemoved.dispatch(this, component);

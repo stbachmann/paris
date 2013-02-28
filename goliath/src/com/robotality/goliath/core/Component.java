@@ -11,18 +11,6 @@ public abstract class Component {
 	protected Entity entity;
 	
 	/**
-	 * Called when this component is added to an entity. Override to define custom behaviour.
-	 * @param entity The entity this component was added to
-	 */
-	protected void added(Entity entity) { this.entity = entity; };
-	
-	/**
-	 * Called when this component is removed from an entity. Override to define custom behaviour.
-	 * @param entity
-	 */
-	protected void removed(Entity entity) { this.entity = null; };
-	
-	/**
 	 * The "brain" of the component. Called every tick.
 	 * @param deltaTime The elapsed frame time since the last frame
 	 */
