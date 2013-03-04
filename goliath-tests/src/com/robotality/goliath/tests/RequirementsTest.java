@@ -9,7 +9,11 @@ public class RequirementsTest {
 		Entity entity = Goliath.createEntity();
 		
 		entity.add(PositionComponent.class);
-		entity.add(MovementComponent.class);
+		MovementComponent component = entity.add(MovementComponent.class);
+		component.velocity = 10;
+		
+		entity.update(0.25f);
+		entity.update(0.25f);
 		
 		try {
 			Entity entity2 = Goliath.createEntity();
@@ -32,20 +36,28 @@ public class RequirementsTest {
 		
 		@Override
 		public void update(float deltaTime) {
-			System.out.println("PositionComponent: update.");
+			System.out.println("Position: " + x + ", " + y);
 		}
 
 	}
 	
 	public static class MovementComponent extends Component {
+		private PositionComponent position;
+		public float velocity;
+		
 		@Override
 		public void create() {
 			System.out.println("Movement component created.");
+			
+			position = entity.getComponent(PositionComponent.class);
 		}
 		
 		@Override
 		public void update(float deltaTime) {
 			System.out.println("MovementComponent: update.");
+			
+			position.x += velocity * deltaTime;
+			position.y += velocity * deltaTime;
 		}
 
 		@Override

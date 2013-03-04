@@ -4,6 +4,11 @@ package com.robotality.goliath.core;
  * Components are the brains that drive Entities. All their logic is defined by the update method. Components have
  * a quick access to the entity they are inserted into via entity.
  * 
+ * create() is called when the component is created. The create should contain all the initialisation that need to
+ * be done on the component (i.e. retrieving other components, etc.). 
+ * 
+ * Unless you know what you're doing you shouldn't override the constructor of the component. Ugly things will happen.
+ * 
  * @author Stefan Bachmann
  */
 public abstract class Component {
