@@ -6,7 +6,7 @@ import com.robotality.goliath.utils.ObjectMap.Keys;
 
 /**
  * Entities are an empty container that are defined by the components added to them. Entities themselves
- * only handle the component processing logic but beyound that do not know "what" they are.
+ * only handle the component processing logic but beyond that do not know "what" they are.
  * 
  * An Entity can only hold one instance of a specific ComponentType. Sorry.
  * 
@@ -41,7 +41,7 @@ public class Entity {
 	/**
 	 * Adds a new Component of the specified type to this Entity.
 	 * @param componentType The Component Type to add to this Entity
-	 * @return The newly created Component
+	 * @return The newly created Component or null
 	 */
 	public <T extends Component> T add(Class<T> componentType){
 		T component = null;
@@ -49,16 +49,39 @@ public class Entity {
 		try {
 			component = componentType.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
-			new RuntimeException(e);
+			throw new RuntimeException(e);
 		}
 		
-		if(component != null){
-			components.put(componentType, component);
-			component.entity = this;
-			
-			componentAdded.dispatch(this, component);
-		}
+		if(!component.matchesEntity(this))
+			throw new RuntimeException("This entity does not meet the component's requirements.");
+		
+		components.put(componentType, component);
+		component.entity = this;
+		
+		componentAdded.dispatch(this, component);
+		
 		return component;
+	}
+	
+	/**
+	 * Checks whether this entity is suitable for a component type. This is a bit dirty because it creates a new
+	 * instance of the component. Don't use this unless GC isn't a concern (i.e. editor).
+	 * @param componentType The component type to check against
+	 * @return Whether this entity is suitable for the component
+	 */
+	public <T extends Component> boolean suits(Class<T> componentType){
+		T component = null;
+		
+		try {
+			component = componentType.newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
+		
+		if(component.matchesEntity(this))
+			return true;
+	
+		return false;
 	}
 	
 	/**
@@ -84,10 +107,25 @@ public class Entity {
 	}
 	
 	/**
-	 * Returns all the components of this Entity as an ObjectMap
+	 * Returns all the components of this Entity as an ObjectMap. Don't remove/add anything 
+	 * to the collection, or else!
 	 */
 	public ObjectMap<Class<? extends Component>, Component> getComponents(){
 		return components;
+	}
+	
+	/**
+	 * Returns true if this entity contains all of the components specified
+	 * @param componentTypes The components to check for
+	 * @return Whether the entity contains the components
+	 */
+	@SuppressWarnings("unchecked")
+	public boolean containsComponent(Class<? extends Component>...componentTypes){
+		for(Class<? extends Component> componentType : componentTypes){
+			if(!components.containsKey(componentType))
+				return false;
+		}
+		return true;
 	}
 	
 	/**

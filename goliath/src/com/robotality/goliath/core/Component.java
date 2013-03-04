@@ -15,4 +15,12 @@ public abstract class Component {
 	 * @param deltaTime The elapsed frame time since the last frame
 	 */
 	public abstract void update(float deltaTime);
+	
+	/**
+	 * If the component has any special requirements override this method and implement custom logic. The default
+	 * component always returns true.
+	 * @param entity The entity the user is trying to insert the component into
+	 * @return Whether the entity is a suitable candidate for this component
+	 */
+	public boolean matchesEntity(Entity entity) { return true; }
 }

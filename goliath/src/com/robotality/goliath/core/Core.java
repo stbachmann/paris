@@ -99,4 +99,5 @@ public class Core {
 		entity.componentAdded.remove(componentAddedListener);
 		entity.componentRemoved.remove(componentRemovedListener);
 	}
+	
 }
