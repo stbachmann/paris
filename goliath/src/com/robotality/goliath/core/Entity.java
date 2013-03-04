@@ -60,6 +60,8 @@ public class Entity {
 		
 		componentAdded.dispatch(this, component);
 		
+		component.create();
+		
 		return component;
 	}
 	
@@ -101,6 +103,11 @@ public class Entity {
 		return component;
 	}
 	
+	/**
+	 * Returns the component of the specified type
+	 * @param componentType The component type to return
+	 * @return The component
+	 */
 	@SuppressWarnings("unchecked")
 	public <T extends Component> T getComponent(Class<T> componentType){
 		return (T) components.get(componentType);

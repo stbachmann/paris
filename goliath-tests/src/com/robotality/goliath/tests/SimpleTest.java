@@ -19,8 +19,12 @@ public class SimpleTest {
 		public float x, y;
 		
 		@Override
-		public void update(float deltaTime) {
+		public void create() {
 			System.out.println("Hello World!");
+		}
+		
+		@Override
+		public void update(float deltaTime) {
 			System.out.println("Position: " + x + ", " + y);
 		}
 	}

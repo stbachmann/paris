@@ -11,6 +11,11 @@ public abstract class Component {
 	protected Entity entity;
 	
 	/**
+	 * Called when the component has been created before the first update() call.
+	 */
+	public abstract void create();
+	
+	/**
 	 * The "brain" of the component. Called every tick.
 	 * @param deltaTime The elapsed frame time since the last frame
 	 */
