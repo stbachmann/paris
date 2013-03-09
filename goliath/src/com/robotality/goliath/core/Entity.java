@@ -48,7 +48,7 @@ public class Entity {
 	
 		try {
 			component = componentType.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 		
@@ -76,7 +76,7 @@ public class Entity {
 		
 		try {
 			component = componentType.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 		
