@@ -6,6 +6,6 @@
 # per project ignores, it's cumbersome, but reduces the risk of missing something
 
 # target directories:
-/goliath/bin
-/goliath-tests/bin
-/goliath-example/bin
+/paris/bin
+/paris-tests/bin
+/paris-example/bin
