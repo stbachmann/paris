@@ -8,11 +8,11 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.robotality.magnet.components.MagnetMouse;
 import com.robotality.magnet.entities.Sprite;
 import com.robotality.magnet.systems.Renderer;
-import com.robotality.paris.utils.MathUtils;
 
 public class MagnetMain {
 	

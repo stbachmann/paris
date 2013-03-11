@@ -1,11 +1,11 @@
 package com.robotality.magnet.components;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.robotality.paris.core.Component;
 import com.robotality.paris.core.Entity;
-import com.robotality.paris.utils.MathUtils;
 
 public class MagnetMouse extends Component {
 	private Vector3 currentMouse = new Vector3();

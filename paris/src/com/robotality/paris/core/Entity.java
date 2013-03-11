@@ -1,8 +1,8 @@
 package com.robotality.paris.core;
 
+import com.badlogic.gdx.utils.ObjectMap;
+import com.badlogic.gdx.utils.ObjectMap.Keys;
 import com.robotality.paris.signals.Signal;
-import com.robotality.paris.utils.ObjectMap;
-import com.robotality.paris.utils.ObjectMap.Keys;
 
 /**
  * Entities are an empty container that are defined by the components added to them. Entities themselves

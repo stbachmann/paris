@@ -1,10 +1,10 @@
 package com.robotality.paris.core;
 
+import com.badlogic.gdx.utils.IntMap;
+import com.badlogic.gdx.utils.ObjectMap;
+import com.badlogic.gdx.utils.ObjectMap.Keys;
 import com.robotality.paris.signals.Listener;
 import com.robotality.paris.signals.Signal;
-import com.robotality.paris.utils.IntMap;
-import com.robotality.paris.utils.ObjectMap;
-import com.robotality.paris.utils.ObjectMap.Keys;
 
 /**
  * The Core manages all entities currently in use and provides access to entities grouped by components. Usually

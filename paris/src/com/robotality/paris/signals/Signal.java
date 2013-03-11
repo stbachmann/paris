@@ -1,6 +1,6 @@
 package com.robotality.paris.signals;
 
-import com.robotality.paris.utils.Array;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * A Signal is a basic event class then can dispatch an event to multiple listeners. It uses
