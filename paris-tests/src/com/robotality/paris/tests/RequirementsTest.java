@@ -8,8 +8,9 @@ public class RequirementsTest {
 	public static void main(String[] args){
 		Entity entity = Paris.createEntity();
 		
-		entity.add(PositionComponent.class);
-		MovementComponent component = entity.add(MovementComponent.class);
+		entity.add(new PositionComponent());
+		MovementComponent component = new MovementComponent();
+		entity.add(component);
 		component.velocity = 10;
 		
 		entity.update(0.25f);
@@ -18,8 +19,8 @@ public class RequirementsTest {
 		try {
 			Entity entity2 = Paris.createEntity();
 			
-			entity2.add(MovementComponent.class);
-			entity2.add(PositionComponent.class);
+			entity2.add(new MovementComponent());
+			entity2.add(new PositionComponent());
 		}
 		catch(Exception e){
 			e.printStackTrace();

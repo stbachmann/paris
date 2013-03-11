@@ -43,27 +43,28 @@ public class Entity {
 	 * @param componentType The Component Type to add to this Entity
 	 * @return The newly created Component or null
 	 */
-	public <T extends Component> T add(Class<T> componentType){
-		T component = null;
-	
-		try {
-			component = componentType.newInstance();
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-		
+	public void add(Component component){
 		if(!component.matchesEntity(this))
 			throw new RuntimeException("This entity does not meet the component's requirements.");
 		
-		components.put(componentType, component);
+		components.put(component.getClass(), component);
 		component.entity = this;
 		
 		componentAdded.dispatch(this, component);
 		
 		component.create();
-		
-		return component;
 	}
+	
+	/**
+	 * Adds a new Component of the specified type to this Entity.
+	 * @param componentType The Component Type to add to this Entity
+	 * @return The newly created Component or null
+	 */
+	public void add(Component...components){
+		for(Component c:components)
+			add(c);
+	}
+	
 	
 	/**
 	 * Checks whether this entity is suitable for a component type. This is a bit dirty because it creates a new

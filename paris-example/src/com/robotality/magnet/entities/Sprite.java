@@ -13,8 +13,11 @@ public class Sprite extends Entity {
 	public Sprite(TextureRegion region){
 		Paris.addEntity(this);
 		
-		position = add(Position.class);
-		renderable = add(Renderable.class);
+		position = new Position();
+		renderable = new Renderable();
+		
+		add(position, renderable);
+		
 		renderable.region = region;
 	}
 }

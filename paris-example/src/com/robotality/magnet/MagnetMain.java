@@ -51,7 +51,7 @@ public class MagnetMain {
 				sprite.position.x = MathUtils.random(640);
 				sprite.position.y = MathUtils.random(480);
 				
-				sprite.add(MagnetMouse.class);
+				sprite.add(new MagnetMouse());
 				
 				coins.add(sprite);
 			}

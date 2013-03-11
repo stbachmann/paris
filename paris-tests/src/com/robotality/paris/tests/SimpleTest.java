@@ -8,7 +8,8 @@ public class SimpleTest {
 	public static void main(String[] args){
 		Entity entity = Paris.createEntity();
 		
-		PositionComponent position = entity.add(PositionComponent.class);
+		PositionComponent position = new PositionComponent();
+		entity.add(position);
 		position.x = 10;
 		position.y = 5;
 		
